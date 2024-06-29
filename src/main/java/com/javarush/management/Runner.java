@@ -1,11 +1,14 @@
 package com.javarush.management;
 
-import com.javarush.repository.MovieManager;
+import com.javarush.domain.Film;
+import com.javarush.util.MovieSessionFactory;
+import org.hibernate.Session;
 
 public class Runner {
-
     public static void main(String[] args) {
-        MovieManager manager = new MovieManager();
-        System.out.println(manager.getPaymentById((short) 2).getRental().getStaff());
+        try (Session session = MovieSessionFactory.getSessionFactory().openSession()) {
+            Film film = session.load(Film.class, (short) 10);
+            System.out.println(film.getCategories());
+        }
     }
 }
