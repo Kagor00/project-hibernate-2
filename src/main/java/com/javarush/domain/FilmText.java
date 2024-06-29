@@ -5,17 +5,20 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 @Entity
 @Table(schema = "movie", name = "film_text")
 @Getter
 @Setter
 @ToString
-public class FilmText {
+public class FilmText implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "film_id")
-    private Short id;
+    @OneToOne(cascade = CascadeType.ALL)
+    @MapsId
+    @JoinColumn(name = "film_id", referencedColumnName = "film_id")
+    private Film film;
 
     private String title;
 

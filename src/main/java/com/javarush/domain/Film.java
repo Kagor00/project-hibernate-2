@@ -82,6 +82,12 @@ public class Film {
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
+
+    @ToString.Exclude
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "film_id", referencedColumnName = "film_id")
+    private FilmText filmText;
+
     public Set<Feature> getSpecialFeatures() {
         if (isNull(specialFeatures) || specialFeatures.isEmpty()) {
             return null;
