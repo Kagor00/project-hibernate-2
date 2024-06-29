@@ -82,7 +82,7 @@ public class Film {
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
-    public Set<Feature> getSpecialFeature() {
+    public Set<Feature> getSpecialFeatures() {
         if (isNull(specialFeatures) || specialFeatures.isEmpty()) {
             return null;
         }
@@ -98,7 +98,7 @@ public class Film {
         return result;
     }
 
-    public void setSpecialFeature(Set<Feature> features) {
+    public void setSpecialFeatures(Set<Feature> features) {
         if (!isNull(features)) {
             specialFeatures = features.stream().map(Feature::getValue).collect(Collectors.joining(","));
         }
