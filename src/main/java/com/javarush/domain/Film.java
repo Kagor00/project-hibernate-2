@@ -89,7 +89,7 @@ public class Film {
 
         Set<Feature> result = new HashSet<>();
         String[] features = specialFeatures.trim().split(",");
-        for (String feature: features) {
+        for (String feature : features) {
             result.add(Feature.getFeatureByValue(feature));
         }
 
@@ -100,7 +100,7 @@ public class Film {
 
     public void setSpecialFeature(Set<Feature> features) {
         if (!isNull(features)) {
-            features.stream().map(Feature::getValue).collect(Collectors.joining(", "));
+            specialFeatures = features.stream().map(Feature::getValue).collect(Collectors.joining(","));
         }
     }
 }
