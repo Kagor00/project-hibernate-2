@@ -11,6 +11,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
+
+import static java.util.Objects.isNull;
 
 @Entity
 @Table(schema = "movie", name = "film")
@@ -78,6 +81,28 @@ public class Film {
             joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"))
     private Set<Category> categories = new HashSet<>();
+
+    public Set<Feature> getSpecialFeature() {
+        if (isNull(specialFeatures) || specialFeatures.isEmpty()) {
+            return null;
+        }
+
+        Set<Feature> result = new HashSet<>();
+        String[] features = specialFeatures.split(",");
+        for (String feature: features) {
+            result.add(Feature.getFeatureByValue(feature));
+        }
+
+        return result;
+
+
+    }
+
+    public void setSpecialFeature(Set<Feature> features) {
+        if (!isNull(features)) {
+            features.stream().map(Feature::getValue).collect(Collectors.joining(", "));
+        }
+    }
 }
 
 

@@ -7,8 +7,8 @@ import org.hibernate.Session;
 public class Runner {
     public static void main(String[] args) {
         try (Session session = MovieSessionFactory.getSessionFactory().openSession()) {
-            Film film = session.load(Film.class, (short) 10);
-            System.out.println(film.getCategories());
+            Film film = session.load(Film.class, (short) 8);
+            System.out.println(film.getActors());
         }
     }
 }
