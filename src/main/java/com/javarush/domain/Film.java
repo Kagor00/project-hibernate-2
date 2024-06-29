@@ -88,14 +88,14 @@ public class Film {
         }
 
         Set<Feature> result = new HashSet<>();
-        String[] features = specialFeatures.split(",");
+        String[] features = specialFeatures.trim().split(",");
         for (String feature: features) {
             result.add(Feature.getFeatureByValue(feature));
         }
 
+        result.remove(null);
+
         return result;
-
-
     }
 
     public void setSpecialFeature(Set<Feature> features) {

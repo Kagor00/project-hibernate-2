@@ -23,7 +23,7 @@ public enum Feature {
         Feature[] features = Feature.values();
 
         for (Feature feature: features) {
-            if (feature.value.equals(value)) {
+            if (feature.value.equalsIgnoreCase(value)) {
                 return feature;
             }
         }
