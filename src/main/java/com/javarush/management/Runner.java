@@ -1,14 +1,15 @@
 package com.javarush.management;
 
 import com.javarush.domain.Film;
-import com.javarush.domain.FilmText;
+import com.javarush.service.MovieService;
 import com.javarush.util.MovieSessionFactory;
-import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 public class Runner {
     public static void main(String[] args) {
-        try (Session session = MovieSessionFactory.getSessionFactory().openSession()) {
-
-        }
+        SessionFactory sessionFactory = MovieSessionFactory.getSessionFactory();
+        MovieService movieService = new MovieService(sessionFactory);
+        Film film = movieService.getFirstFilm();
+        System.out.println(film);
     }
 }

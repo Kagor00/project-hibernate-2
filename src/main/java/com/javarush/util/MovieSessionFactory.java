@@ -11,7 +11,7 @@ public class MovieSessionFactory {
     private final SessionFactory sessionFactory;
     private static MovieSessionFactory instance;
 
-    public MovieSessionFactory() {
+    private MovieSessionFactory() {
         Properties properties = new Properties();
         properties.put(Environment.DRIVER, "com.p6spy.engine.spy.P6SpyDriver");
         properties.put(Environment.URL, "jdbc:p6spy:mysql://localhost:3306/movie");
@@ -47,5 +47,4 @@ public class MovieSessionFactory {
 
         return instance.sessionFactory;
     }
-
 }
