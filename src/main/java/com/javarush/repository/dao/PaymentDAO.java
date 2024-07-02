@@ -1,4 +1,4 @@
-package com.javarush.dao;
+package com.javarush.repository.dao;
 
 import com.javarush.domain.Payment;
 import org.hibernate.SessionFactory;

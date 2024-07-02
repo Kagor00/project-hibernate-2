@@ -1,10 +1,13 @@
-package com.javarush.dao;
+package com.javarush.repository.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;
+
+import static org.hibernate.resource.transaction.spi.TransactionStatus.MARKED_ROLLBACK;
 
 public abstract class AbstractHibernateDAO<T> {
     private final Class<T> clazz;
@@ -15,12 +18,12 @@ public abstract class AbstractHibernateDAO<T> {
         this.sessionFactory = sessionFactory;
     }
 
-    public Session getCurrentSession() {
+    protected Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
 
     public T getById(final Number id) {
-        return (T) getCurrentSession().get(clazz, id);
+        return getCurrentSession().get(clazz, id);
     }
 
     public List<T> getItems(int offset, int count) {

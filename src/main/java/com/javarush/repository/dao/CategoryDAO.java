@@ -1,4 +1,4 @@
-package com.javarush.dao;
+package com.javarush.repository.dao;
 
 import com.javarush.domain.Category;
 import org.hibernate.SessionFactory;

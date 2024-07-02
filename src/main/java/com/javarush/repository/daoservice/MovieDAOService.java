@@ -1,14 +1,11 @@
-package com.javarush.service;
+package com.javarush.repository.daoservice;
 
-import com.javarush.dao.*;
-import com.javarush.domain.Film;
+import com.javarush.repository.dao.*;
+import lombok.Getter;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.resource.transaction.spi.TransactionStatus;
 
-import static org.hibernate.resource.transaction.spi.TransactionStatus.MARKED_ROLLBACK;
-
-public class MovieService {
+@Getter
+public class MovieDAOService {
     private final SessionFactory sessionFactory;
     private final ActorDAO actorDAO;
     private final AddressDAO addressDAO;
@@ -26,7 +23,7 @@ public class MovieService {
     private final StoreDAO storeDAO;
 
 
-    public MovieService(SessionFactory sessionFactory) {
+    public MovieDAOService(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
         actorDAO = new ActorDAO(sessionFactory);
         addressDAO = new AddressDAO(sessionFactory);
@@ -42,27 +39,22 @@ public class MovieService {
         rentalDAO = new RentalDAO(sessionFactory);
         staffDAO = new StaffDAO(sessionFactory);
         storeDAO = new StoreDAO(sessionFactory);
-
     }
 
-    public Film getFirstFilm() {
-        Transaction transaction = null;
-        Film film = null;
-        try {
-            transaction = sessionFactory.getCurrentSession().beginTransaction();
-            film = filmDAO.getById((short) 1);
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction == null &&
-                    (transaction.isActive() || transaction.getStatus() == MARKED_ROLLBACK)) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }
-        return film;
-    }
-
-    public void createCustomer() {
-
-    }
+//    public void createCustomer(Customer customer) {
+//        Transaction transaction = null;
+//
+//        try {
+//            transaction = sessionFactory.getCurrentSession().beginTransaction();
+//            customerDAO.save(customer);
+//            transaction.commit();
+//            System.out.println("Customer " + customer.getFirstName() + " " + customer.getLastName() + " added successfully.");
+//        } catch (Exception e) {
+//            if (transaction != null &&
+//                    (transaction.isActive() || transaction.getStatus() == MARKED_ROLLBACK)) {
+//                transaction.rollback();
+//            }
+//            e.printStackTrace();
+//        }
+//    }
 }

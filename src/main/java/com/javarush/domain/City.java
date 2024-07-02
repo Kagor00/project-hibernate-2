@@ -21,7 +21,7 @@ public class City {
     private String city;
 
     @ToString.Exclude
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "country_id", referencedColumnName = "country_id")
     private Country country;
 

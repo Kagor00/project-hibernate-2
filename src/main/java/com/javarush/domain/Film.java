@@ -35,12 +35,12 @@ public class Film {
     @Column(name = "release_year", columnDefinition = "year")
     private Integer releaseYear;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "language_id")
     private Language language;
 
     @ToString.Exclude
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "original_language_id")
     private Language originalLanguage;
 
@@ -76,7 +76,7 @@ public class Film {
 
 
     @ToString.Exclude
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "film_category",
             joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"))
@@ -84,7 +84,7 @@ public class Film {
 
 
     @ToString.Exclude
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "film_id", referencedColumnName = "film_id")
     private FilmText filmText;
 

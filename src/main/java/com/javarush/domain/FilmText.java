@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class FilmText implements Serializable {
 
     @Id
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @MapsId
     @JoinColumn(name = "film_id", referencedColumnName = "film_id")
     private Film film;
