@@ -24,12 +24,12 @@ public class Rental {
     private LocalDateTime rentalDate;
 
     @ToString.Exclude
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "inventory_id", referencedColumnName = "inventory_id")
     private Inventory inventory;
 
     @ToString.Exclude
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
     private Customer customer;
 
@@ -37,7 +37,7 @@ public class Rental {
     private LocalDateTime returnDate;
 
     @ToString.Exclude
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "staff_id", referencedColumnName = "staff_id")
     private Staff staff;
 

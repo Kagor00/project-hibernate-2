@@ -1,11 +1,10 @@
-package com.javarush.repository.daoservice;
+package com.javarush.dao;
 
-import com.javarush.repository.dao.*;
 import lombok.Getter;
 import org.hibernate.SessionFactory;
 
 @Getter
-public class MovieDAOService {
+public class DAOFacade {
     private final SessionFactory sessionFactory;
     private final ActorDAO actorDAO;
     private final AddressDAO addressDAO;
@@ -23,7 +22,7 @@ public class MovieDAOService {
     private final StoreDAO storeDAO;
 
 
-    public MovieDAOService(SessionFactory sessionFactory) {
+    public DAOFacade(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
         actorDAO = new ActorDAO(sessionFactory);
         addressDAO = new AddressDAO(sessionFactory);
@@ -40,21 +39,4 @@ public class MovieDAOService {
         staffDAO = new StaffDAO(sessionFactory);
         storeDAO = new StoreDAO(sessionFactory);
     }
-
-//    public void createCustomer(Customer customer) {
-//        Transaction transaction = null;
-//
-//        try {
-//            transaction = sessionFactory.getCurrentSession().beginTransaction();
-//            customerDAO.save(customer);
-//            transaction.commit();
-//            System.out.println("Customer " + customer.getFirstName() + " " + customer.getLastName() + " added successfully.");
-//        } catch (Exception e) {
-//            if (transaction != null &&
-//                    (transaction.isActive() || transaction.getStatus() == MARKED_ROLLBACK)) {
-//                transaction.rollback();
-//            }
-//            e.printStackTrace();
-//        }
-//    }
 }

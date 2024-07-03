@@ -25,7 +25,7 @@ public class Inventory {
     private Film film;
 
     @ToString.Exclude
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
     private Store store;
 

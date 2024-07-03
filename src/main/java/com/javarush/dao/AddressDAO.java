@@ -1,4 +1,4 @@
-package com.javarush.repository.dao;
+package com.javarush.dao;
 
 import com.javarush.domain.Address;
 import org.hibernate.SessionFactory;

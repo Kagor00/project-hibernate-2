@@ -21,7 +21,7 @@ public class Customer {
     private Short id;
 
     @ToString.Exclude
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
     private Store store;
 
@@ -34,7 +34,7 @@ public class Customer {
     private String email;
 
     @ToString.Exclude
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
 

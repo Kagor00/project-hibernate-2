@@ -21,12 +21,12 @@ public class Store {
     private Byte id;
 
     @ToString.Exclude
-    @OneToOne(cascade = {CascadeType.PERSIST})
+    @OneToOne
     @JoinColumn(name = "manager_staff_id", referencedColumnName = "staff_id")
     private Staff staff;
 
     @ToString.Exclude
-    @OneToOne(cascade = {CascadeType.PERSIST})
+    @OneToOne
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
 

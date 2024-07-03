@@ -1,7 +1,6 @@
-package com.javarush.repository.dao;
+package com.javarush.dao;
 
 import com.javarush.domain.City;
-import jakarta.persistence.TypedQuery;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 

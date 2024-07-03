@@ -1,13 +1,10 @@
-package com.javarush.repository.dao;
+package com.javarush.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;
-
-import static org.hibernate.resource.transaction.spi.TransactionStatus.MARKED_ROLLBACK;
 
 public abstract class AbstractHibernateDAO<T> {
     private final Class<T> clazz;
